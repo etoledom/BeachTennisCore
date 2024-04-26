@@ -1,4 +1,4 @@
-public struct AcceptanceLists: Codable {
+public struct AcceptanceLists: Codable, Sendable {
     public let list: [String: AcceptanceListDescription]
 
     public init(list: [String : AcceptanceListDescription]) {
@@ -6,7 +6,7 @@ public struct AcceptanceLists: Codable {
     }
 }
 
-public struct AcceptanceListDescription: Codable {
+public struct AcceptanceListDescription: Codable, Sendable {
     public let playerTypeDesc: String
     public let isJuniorRegional: Bool
     public let entryLists: [EntryList]
@@ -18,7 +18,7 @@ public struct AcceptanceListDescription: Codable {
     }
 }
 
-public struct EntryList: Codable {
+public struct EntryList: Codable, Sendable {
     public let entryClassification: String?
     public let entries: [TeamEntry]
 
@@ -28,7 +28,7 @@ public struct EntryList: Codable {
     }
 }
 
-public struct TeamEntry: Codable {
+public struct TeamEntry: Codable, Sendable {
     public let positionDisplay: String?
     public let players: [Player]
     public let isAvailableSlot: Bool

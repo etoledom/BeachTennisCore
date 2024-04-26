@@ -1,4 +1,4 @@
-public enum Category: String, CaseIterable, Codable {
+public enum Category: String, CaseIterable, Codable, Sendable {
     case bt10 = "BT10"
     case bt50 = "BT50"
     case bt100 = "BT100"
@@ -31,7 +31,7 @@ public enum Category: String, CaseIterable, Codable {
     }
 }
 
-public struct RegionFilter: Codable, Hashable {
+public struct RegionFilter: Codable, Hashable, Sendable {
     public let nameDisplay: String
     public let code: String
     public let flagURL: String
@@ -43,7 +43,7 @@ public struct RegionFilter: Codable, Hashable {
     }
 }
 
-public struct Filters: Codable {
+public struct Filters: Codable, Sendable {
     public let regions: [RegionFilter]
     public let playersRegions: [RegionFilter]
 

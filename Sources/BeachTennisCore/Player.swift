@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Player: Codable, Hashable {
+public struct Player: Codable, Hashable, Sendable {
     public let playerId: Int
     public let nationality: String
     public let givenName: String
@@ -90,7 +90,7 @@ public struct Player: Codable, Hashable {
     }
 }
 
-public struct PlayerDetails: Codable, Hashable {
+public struct PlayerDetails: Codable, Hashable, Sendable {
     public let highestRanking: Int
     public let highestRankingDate: Date
     public let highestRankingDateDisplay: String

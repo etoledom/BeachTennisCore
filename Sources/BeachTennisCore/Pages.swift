@@ -1,4 +1,4 @@
-public struct Page<T: Codable>: Codable {
+public struct Page<T: Codable>: Codable, Sendable where T: Sendable {
     public let items: [T]
     public let metadata: PageMetadata
 
@@ -8,7 +8,7 @@ public struct Page<T: Codable>: Codable {
     }
 }
 
-public struct PageMetadata: Codable {
+public struct PageMetadata: Codable, Sendable {
     public let page: Int
     public let per: Int
     public let total: Int

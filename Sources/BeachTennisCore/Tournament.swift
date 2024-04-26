@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Tournament: Codable, Hashable {
+public struct Tournament: Codable, Hashable, Sendable {
     public let tournamentName: String
     public let dates: String
     public let location: String
@@ -72,7 +72,7 @@ public struct Tournament: Codable, Hashable {
     }
 }
 
-public struct TournamentDetail: Codable {
+public struct TournamentDetail: Codable, Sendable {
     public let entryDeadline: Date?
     public let withdrawalDeadline: Date?
     public let qualifyingStartsDate: Date?
@@ -91,13 +91,14 @@ public struct TournamentDetail: Codable {
     }
 }
 
-public enum FieldActionId: String, Codable {
+public enum FieldActionId: String, Codable, Sendable {
     case none
     case openMaps
     case copyText
     case dateNotification
 }
-public struct LabelValueField: Codable {
+
+public struct LabelValueField: Codable, Sendable {
     public let action: FieldActionId
     public let label: String
     public let value: String

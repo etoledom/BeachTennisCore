@@ -1,4 +1,4 @@
-public struct DrawAvailable: Codable {
+public struct DrawAvailable: Codable, Sendable {
     public let isAvailable: Bool
 
     public init(isAvailable: Bool) {
@@ -6,7 +6,7 @@ public struct DrawAvailable: Codable {
     }
 }
 
-public struct DrawRound: Codable {
+public struct DrawRound: Codable, Sendable {
     public let description: String
     public let number: Int
     public let matches: [DrawMatch]
@@ -18,19 +18,19 @@ public struct DrawRound: Codable {
     }
 }
 
-public enum MatchStatus: String, Codable {
+public enum MatchStatus: String, Codable, Sendable {
     case toBePlayed = "TP"
     case playedAndCompleted = "PC"
     case notPlayerd = "NP"
     case unknown
 }
 
-public enum ResultStatus: String, Codable {
+public enum ResultStatus: String, Codable, Sendable {
     case walkOver = "WO"
     case bye = "BYE"
 }
 
-public struct DrawMatch: Codable {
+public struct DrawMatch: Codable, Sendable {
     public let matchId: Int
     public let teams: [DrawTeam]
     public let status: MatchStatus
@@ -48,7 +48,7 @@ public struct DrawMatch: Codable {
     }
 }
 
-public enum DrawTeamStatus: String, Codable {
+public enum DrawTeamStatus: String, Codable, Sendable {
     case bye
     case toBePlayed
     case winning
@@ -56,7 +56,7 @@ public enum DrawTeamStatus: String, Codable {
     case unknown
 }
 
-public struct DrawTeam: Codable {
+public struct DrawTeam: Codable, Sendable {
     public let players: [Player?]
     public let scores: [DrawScore]
     public let status: DrawTeamStatus
@@ -72,7 +72,7 @@ public struct DrawTeam: Codable {
     }
 }
 
-public struct DrawScore: Codable {
+public struct DrawScore: Codable, Sendable {
     public let score: Int
     public let losingScore: Int?
 
