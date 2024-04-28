@@ -18,9 +18,10 @@ public struct Player: Codable, Hashable, Sendable {
     public let countryCodeAlpha3: String
     public let age: Int?
     public let details: PlayerDetails?
+    public let calendarYearWinsLosses: WinsLosses?
     public let profileURL: String
 
-    public init(playerId: Int, nationality: String, givenName: String, familyName: String, hiddenPlayer: Bool, ranking: Int?, profileImageUrl: String, countryFlagUrl: String, points: Int, rankingMovement: Int, countryCodeAlpha3: String, age: Int?, details: PlayerDetails?, profileURL: String) {
+    public init(playerId: Int, nationality: String, givenName: String, familyName: String, hiddenPlayer: Bool, ranking: Int?, profileImageUrl: String, countryFlagUrl: String, points: Int, rankingMovement: Int, countryCodeAlpha3: String, age: Int?, details: PlayerDetails?, calendarYearWinsLosses: WinsLosses?, profileURL: String) {
         let givenName = givenName.capitalized
         let familyName = familyName.capitalized
         self.playerId = playerId
@@ -66,6 +67,7 @@ public struct Player: Codable, Hashable, Sendable {
         self.age = age
         self.details = details
         self.profileURL = profileURL
+        self.calendarYearWinsLosses = calendarYearWinsLosses
     }
 
     public init() {
@@ -87,6 +89,7 @@ public struct Player: Codable, Hashable, Sendable {
         age = nil
         details = nil
         profileURL = ""
+        calendarYearWinsLosses = nil
     }
 }
 
@@ -94,9 +97,24 @@ public struct PlayerDetails: Codable, Hashable, Sendable {
     public let highestRanking: Int
     public let highestRankingDate: Date
     public let highestRankingDateDisplay: String
-    public init(highestRanking: Int, highestRankingDate: Date, highestRankingDateDisplay: String) {
+    public let startedYear: Int
+    public init(highestRanking: Int, highestRankingDate: Date, highestRankingDateDisplay: String, startedYear: Int) {
         self.highestRanking = highestRanking
         self.highestRankingDate = highestRankingDate
         self.highestRankingDateDisplay = highestRankingDateDisplay
+        self.startedYear = startedYear
+    }
+}
+
+public struct WinsLosses: Codable, Hashable, Sendable {
+    public let wins: Int
+    public let losses: Int
+    public let winRate: Double
+    public let winRateDisplay: String
+    public init(wins: Int, losses: Int, winRate: Double, winRateDisplay: String) {
+        self.wins = wins
+        self.losses = losses
+        self.winRate = winRate
+        self.winRateDisplay = winRateDisplay
     }
 }
