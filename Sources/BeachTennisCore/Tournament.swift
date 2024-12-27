@@ -22,8 +22,9 @@ public struct Tournament: Codable, Hashable, Sendable {
     public let year: Int
     public let flagImageLink: String
     public let liveLink: String?
+    public let continent: String
 
-    public init(tournamentName: String, dates: String, location: String, category: String, prizeMoney: String, id: Int, name: String, promotionalName: String, hostNation: String, hostNationCode: String, venue: String, startDate: Date, endDate: Date, duration: Int, tournamentKey: String, tournamentLink: String, year: Int, flagImageLink: String, liveLink: String?) {
+    public init(tournamentName: String, dates: String, location: String, category: String, prizeMoney: String, id: Int, name: String, promotionalName: String, hostNation: String, hostNationCode: String, venue: String, startDate: Date, endDate: Date, duration: Int, tournamentKey: String, tournamentLink: String, year: Int, flagImageLink: String, liveLink: String?, continent: String) {
         self.tournamentName = tournamentName
         self.dates = dates
         self.location = location
@@ -45,6 +46,7 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = year
         self.flagImageLink = flagImageLink
         self.liveLink = liveLink
+        self.continent = continent
     }
 
     public init() {
@@ -69,6 +71,7 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = 0
         self.flagImageLink = ""
         self.liveLink = ""
+        self.continent = ""
     }
 }
 

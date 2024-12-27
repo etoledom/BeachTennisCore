@@ -43,12 +43,24 @@ public struct RegionFilter: Codable, Hashable, Sendable {
     }
 }
 
+public struct ContinentsFilter: Codable, Hashable, Sendable {
+    public let nameDisplay: String
+    public let code: String
+
+    public init(nameDisplay: String, code: String) {
+        self.nameDisplay = nameDisplay
+        self.code = code
+    }
+}
+
 public struct Filters: Codable, Sendable {
     public let regions: [RegionFilter]
+    public let tournamentsContinents: [ContinentsFilter]
     public let playersRegions: [RegionFilter]
 
-    public init(regions: [RegionFilter], playersRegions: [RegionFilter]) {
+    public init(regions: [RegionFilter], playersRegions: [RegionFilter], tournamentsContinents: [ContinentsFilter]) {
         self.regions = regions
         self.playersRegions = playersRegions
+        self.tournamentsContinents = tournamentsContinents
     }
 }
