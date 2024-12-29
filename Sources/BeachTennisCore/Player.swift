@@ -16,60 +16,38 @@ public struct Player: Codable, Hashable, Sendable {
     public let rankingMovement: Int
     public let rankingMovementDisplay: String
     public let countryCodeAlpha3: String
+    public let countryCodeAlpha2: String
     public let age: Int?
     public let details: PlayerDetails?
     public let calendarYearWinsLosses: WinsLosses?
     public let profileURL: String
 
-    public init(playerId: Int, nationality: String, givenName: String, familyName: String, hiddenPlayer: Bool, ranking: Int?, profileImageUrl: String, countryFlagUrl: String, points: Int, rankingMovement: Int, countryCodeAlpha3: String, age: Int?, details: PlayerDetails?, calendarYearWinsLosses: WinsLosses?, profileURL: String) {
-        let givenName = givenName.capitalized
-        let familyName = familyName.capitalized
+    public init(playerId: Int, nationality: String, givenName: String, familyName: String, hiddenPlayer: Bool, ranking: Int?, rankingDisplay: String, profileImageUrl: String, countryFlagUrl: String, fullName: String, shortName: String, points: Int, rankingMovement: Int, rankingMovementDisplay: String, countryCodeAlpha3: String, countryCodeAlpha2: String, age: Int?, details: PlayerDetails?, calendarYearWinsLosses: WinsLosses?, profileURL: String) {
+
         self.playerId = playerId
         self.nationality = nationality
         self.givenName = givenName
         self.familyName = familyName
         self.hiddenPlayer = hiddenPlayer
         self.ranking = ranking
+        self.rankingDisplay = rankingDisplay
         self.profileImageUrl = profileImageUrl
         self.countryFlagUrl = countryFlagUrl
-        self.fullName = "\(givenName) \(familyName)"
-        let initial = givenName.first?.uppercased() ?? ""
-        let components = familyName.components(separatedBy: " ")
-        var finalSurname = ""
-        for surnameComponent in components {
-            if surnameComponent.count <= 3 {
-                finalSurname += "\(surnameComponent.lowercased()) "
-            } else {
-                finalSurname += "\(surnameComponent.lowercased().capitalized)"
-                break
-            }
-        }
-
-        self.shortName = "\(initial). \(finalSurname)"
-        if let ranking {
-            self.rankingDisplay = "\(ranking)"
-        } else {
-            self.rankingDisplay = "-"
-        }
-
+        self.fullName = fullName
+        self.shortName = shortName
         self.points = points
         self.rankingMovement = rankingMovement
-        self.rankingMovementDisplay = {
-            if rankingMovement > 0 {
-                return "\(rankingMovement)"
-            } else if rankingMovement < 0 {
-                return "\(-1*rankingMovement)"
-            } else {
-                return "􀆀"
-            }
-        }()
+        self.rankingMovementDisplay = rankingMovementDisplay
         self.countryCodeAlpha3 = countryCodeAlpha3
+        self.countryCodeAlpha2 = countryCodeAlpha2
         self.age = age
         self.details = details
-        self.profileURL = profileURL
         self.calendarYearWinsLosses = calendarYearWinsLosses
+        self.profileURL = profileURL
     }
+}
 
+extension Player {
     public init() {
         playerId = 0
         nationality = ""
@@ -86,6 +64,7 @@ public struct Player: Codable, Hashable, Sendable {
         rankingMovement = 0
         rankingMovementDisplay = ""
         countryCodeAlpha3 = ""
+        countryCodeAlpha2 = ""
         age = nil
         details = nil
         profileURL = ""
