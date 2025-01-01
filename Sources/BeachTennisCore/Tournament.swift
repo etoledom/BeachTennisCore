@@ -1,39 +1,52 @@
 import Foundation
 
 public struct Tournament: Codable, Hashable, Sendable {
-    public let tournamentName: String
-    public let dates: String
-    public let location: String
-    public let category: Category
-    public let categoryCode: String
-    public let categoryDisplay: String
-    public let prizeMoney: String
-    public let id: Int
+    public let tournamentKey: String
     public let name: String
     public let promotionalName: String
+    public let location: String
+    public let category: Category
+    public let categoryDisplay: String
+    public let prizeMoney: String
     public let hostNation: String
     public let hostNationCode: String
     public let venue: String
+    public let dates: String
     public let startDate: Date
     public let endDate: Date
     public let duration: Int
-    public let tournamentKey: String
     public let tournamentLink: String
     public let year: Int
     public let flagImageLink: String
     public let liveLink: String?
-    public let continent: String
 
-    public init(tournamentName: String, dates: String, location: String, category: String, prizeMoney: String, id: Int, name: String, promotionalName: String, hostNation: String, hostNationCode: String, venue: String, startDate: Date, endDate: Date, duration: Int, tournamentKey: String, tournamentLink: String, year: Int, flagImageLink: String, liveLink: String?, continent: String) {
-        self.tournamentName = tournamentName
+
+    public init(
+        tournamentKey: String,
+        name: String,
+        promotionalName: String,
+        location: String,
+        category: Category,
+        categoryDisplay: String,
+        prizeMoney: String,
+        hostNation: String,
+        hostNationCode: String,
+        venue: String,
+        dates: String,
+        startDate: Date,
+        endDate: Date,
+        duration: Int,
+        tournamentLink: String,
+        year: Int,
+        flagImageLink: String,
+        liveLink: String?
+    ) {
+        self.name = name
         self.dates = dates
         self.location = location
-        self.category = Category(rawValue: category) ?? .unknown
-        self.categoryDisplay = Category(rawValue: category)?.rawValue ?? category
-        self.categoryCode = category
+        self.category = category
+        self.categoryDisplay = categoryDisplay
         self.prizeMoney = prizeMoney
-        self.id = id
-        self.name = name
         self.promotionalName = promotionalName
         self.hostNation = hostNation
         self.hostNationCode = hostNationCode
@@ -46,19 +59,15 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = year
         self.flagImageLink = flagImageLink
         self.liveLink = liveLink
-        self.continent = continent
     }
 
     public init() {
-        self.tournamentName = ""
+        self.name = ""
         self.dates = ""
         self.location = ""
         self.category = .unknown
         self.categoryDisplay = ""
-        self.categoryCode = ""
         self.prizeMoney = ""
-        self.id = 0
-        self.name = ""
         self.promotionalName = ""
         self.hostNation = ""
         self.hostNationCode = ""
@@ -71,7 +80,6 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = 0
         self.flagImageLink = ""
         self.liveLink = ""
-        self.continent = ""
     }
 }
 
