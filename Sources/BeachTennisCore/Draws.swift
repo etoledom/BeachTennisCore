@@ -22,6 +22,7 @@ public enum MatchStatus: String, Codable, Sendable {
     case toBePlayed = "TP"
     case playedAndCompleted = "PC"
     case notPlayerd = "NP"
+    case playedAndAbandoned = "PA"
     case unknown
 }
 
@@ -53,6 +54,7 @@ public enum DrawTeamStatus: String, Codable, Sendable {
     case toBePlayed
     case winning
     case losing
+    case playedAndAbandoned
     case unknown
 }
 
