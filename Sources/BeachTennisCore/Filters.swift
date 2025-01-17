@@ -6,27 +6,47 @@ public enum Category: String, CaseIterable, Codable, Sendable {
     case bt400 = "BT400"
     case ss50 = "SS50"
     case ss75 = "SS75"
-    case wChamp = "W"
-    case wCup = "WCUP"
-    case panAmerican = "PA"
-    case euro = "E"
+    case wChamp = "W" // World Championship
+    case wCup = "WCUP" // World Cup
+    case panAmerican = "PA" // Panamerican Championship
+    case euro = "E" // European Championship
+    case sstf = "SSTF" // Tour finals
+    case btss = "BTSS" // Sand Series
     case unknown
 
     public var isSilver: Bool {
         switch self {
         case .bt200, .bt400:
-            return true
+            true
         default:
-            return false
+            false
         }
     }
 
     public var isMayor: Bool {
         switch self {
         case .bt10, .bt50, .bt100, .bt200, .bt400, .unknown:
-            return false
+            false
         default:
-            return true
+            true
+        }
+    }
+
+    public var isSandSeries: Bool {
+        switch self {
+            case .ss50, .ss75, .btss:
+                true
+            default:
+                false
+        }
+    }
+
+    public var isChampionship: Bool {
+        switch self {
+            case .wChamp, .wCup, .panAmerican, .euro:
+                true
+            default:
+                false
         }
     }
 }
