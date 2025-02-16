@@ -19,6 +19,7 @@ public struct Tournament: Codable, Hashable, Sendable {
     public let year: Int
     public let flagImageLink: String
     public let liveLink: String?
+    public let groupTitle: String
 
 
     public init(
@@ -39,7 +40,8 @@ public struct Tournament: Codable, Hashable, Sendable {
         tournamentLink: String,
         year: Int,
         flagImageLink: String,
-        liveLink: String?
+        liveLink: String?,
+        groupTitle: String
     ) {
         self.name = name
         self.dates = dates
@@ -59,6 +61,7 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = year
         self.flagImageLink = flagImageLink
         self.liveLink = liveLink
+        self.groupTitle = groupTitle
     }
 
     public init() {
@@ -80,6 +83,7 @@ public struct Tournament: Codable, Hashable, Sendable {
         self.year = 0
         self.flagImageLink = ""
         self.liveLink = ""
+        self.groupTitle = ""
     }
 }
 
