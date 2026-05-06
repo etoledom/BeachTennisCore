@@ -6,6 +6,7 @@ public enum Category: String, CaseIterable, Codable, Sendable {
     case bt400 = "BT400"
     case ss50 = "SS50"
     case ss75 = "SS75"
+    case ss100 = "SS100"
     case wChamp = "W" // World Championship
     case wCup = "WCUP" // World Cup
     case panAmerican = "PA" // Panamerican Championship
